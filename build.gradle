@@ -5,11 +5,11 @@ buildscript {
             'minSdk'               : 23,
             'targetSdk'            : 31,
             // androidx
-            'androidx'             : '1.7.0',
+            'androidx'             : '1.8.0',
             'appCompat'            : '1.4.2',
             'constraintLayout'     : '2.1.4',
             'fragmentKtx'          : "1.4.1",
-            'lifecycle'            : '2.4.1',
+            'lifecycle'            : '2.5.0',
             'navigation'           : '2.5.0',
             'recyclerView'         : '1.2.1',
             'room'                 : "2.4.2",
@@ -21,9 +21,9 @@ buildscript {
             // google
             'dagger'               : '2.41',
             "hilt"                 : "2.41",
-            'material'             : '1.5.0',
+            'material'             : '1.6.1',
             // kotlin
-            'coroutines'           : '1.5.0',
+            'coroutines'           : '1.6.1',
             'kotlin'               : '1.6.21',
             // testing
             'androidxjunit'        : '1.1.3',

@@ -11,7 +11,7 @@ import io.mockk.mockk
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -33,7 +33,7 @@ class GetCurrencyListUseCaseTest(
     }
 
     @Test
-    fun `when requesting currency list, return result`() = runBlockingTest {
+    fun `when requesting currency list, return result`() = runTest {
         // given
         val repository = mockk<FxRepository>()
         coEvery { repository.getCurrencyList() } returns flowOf(repositoryResult)

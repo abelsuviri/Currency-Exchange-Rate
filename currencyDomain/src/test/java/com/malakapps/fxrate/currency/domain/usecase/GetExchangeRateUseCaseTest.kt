@@ -12,7 +12,7 @@ import io.mockk.mockk
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -38,7 +38,7 @@ class GetExchangeRateUseCaseTest(
     }
 
     @Test
-    fun `when requesting exchange rate, return result`() = runBlockingTest {
+    fun `when requesting exchange rate, return result`() = runTest {
         // given
         val srcCurrency = Currency("GBP", "British Pound Sterling")
         val targetCurrency = Currency("EUR", "Euro")
