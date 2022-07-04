@@ -1,0 +1,10 @@
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.coroutines}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
+    implementation "junit:junit:${versions.junit}"
+}

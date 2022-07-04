@@ -15,4 +15,6 @@ dependencyResolutionManagement {
 rootProject.name = "Currecy Exchange Rate"
 include ':app'
 include ':currencyDomain'
+include ':api'
 include ':baseDomain'
+include ':testUtil'
