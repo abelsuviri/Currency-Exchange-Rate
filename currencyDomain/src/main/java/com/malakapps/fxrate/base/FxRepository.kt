@@ -8,8 +8,8 @@ import java.math.BigDecimal
 class FxRepository(
     private val networkSource: IFxApi,
 ) {
-   suspend fun getCurrencyList() = flow<List<Currency>?> { networkSource.getCurrencyList() }
+   suspend fun getCurrencyList() = networkSource.getCurrencyList()
 
     suspend fun getExchangeRate(source: Currency, target: Currency, amount: BigDecimal) =
-        flow<ExchangeRate?> { networkSource.getExchangeRate(source, target, amount) }
+        networkSource.getExchangeRate(source, target, amount)
 }

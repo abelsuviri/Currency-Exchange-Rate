@@ -35,3 +35,4 @@ abstract class FlowUseCase<in TParam, out TResult>(
 }
 
 fun <R> FlowUseCase<Unit, R>.call() = call(Unit)
+val <T> FlowUseCase.Result<T>.data: T? get() = (this as? FlowUseCase.Result.Success<T>)?.result
