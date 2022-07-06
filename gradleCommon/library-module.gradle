@@ -58,6 +58,8 @@ dependencies {
     kapt "com.google.dagger:hilt-compiler:${versions.hilt}"
 
     api project(":baseAndroid")
+
+    testImplementation project(':androidTestUtil')
 }
 
 kapt {

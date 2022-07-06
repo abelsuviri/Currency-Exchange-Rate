@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="currency"
+            type="com.malakapps.fxrate.base.domain.model.Currency" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/spacing">
+
+        <Button
+            android:id="@+id/select_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing"
+            android:text="@string/select_currency"
+            app:goneUnless="@{currency == null}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
+
+        <include
+            android:id="@+id/currency_item"
+            layout="@layout/currency_item"
+            app:currency="@{currency}"
+            app:goneUnless="@{currency != null}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

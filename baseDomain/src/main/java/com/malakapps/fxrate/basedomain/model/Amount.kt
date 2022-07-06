@@ -6,7 +6,7 @@ import java.util.Currency
 
 data class Amount(
     val value: BigDecimal,
-    val currency: String
+    val currency: String?
 ) {
     constructor(value: Double, currency: String, fractionDigits: Int? = null) : this(
         value.toBigDecimal().setScale(

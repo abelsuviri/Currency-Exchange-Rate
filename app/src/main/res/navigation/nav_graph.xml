@@ -3,12 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/fxFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.malakapps.fxrate.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/fxFragment"
+        android:name="com.malakapps.fxrate.currency.view.exchange.FxRateFragment"
+        android:label="@string/currency_exchange_title"
+        tools:layout="@layout/fragment_fx_rate">
+        <action
+            android:id="@+id/action_to_currency_list"
+            app:destination="@id/currencyListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/currencyListFragment"
+        android:name="com.malakapps.fxrate.currency.view.list.CurrencyListFragment"
+        android:label="@string/currency_selection_title"
+        tools:layout="@layout/fragment_currency_list">
     </fragment>
 </navigation>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.malakapps.fxrate.currency.view.exchange.FxRateViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/source_currency"
+            layout="@layout/currency_selector"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:currency="@{viewModel.uiState.sourceCurrency}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.malakapps.fxrate.baseAndroid.view.edittext.AmountEditText
+            android:id="@+id/amount_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/source_currency"
+            tools:text="£10" />
+
+        <include
+            android:id="@+id/target_currency"
+            layout="@layout/currency_selector"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:currency="@{viewModel.uiState.targetCurrency}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/amount_edit_text" />
+
+        <TextView
+            android:id="@+id/exchange_amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:amount="@{viewModel.uiState.rate.amount}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/target_currency"
+            tools:text="€1.15" />
+
+        <TextView
+            android:id="@+id/exchange_rate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/spacing_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/exchange_amount"
+            app:ratePair="@{viewModel.uiState.ratePair}"
+            tools:text="£1 = €1.15" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
