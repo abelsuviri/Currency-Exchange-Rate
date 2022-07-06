@@ -14,6 +14,10 @@ import javax.inject.Singleton
 class ApiServiceModule {
     @Provides
     @Singleton
+    fun apiClientBuilder() = OkHttpClient.Builder()
+
+    @Provides
+    @Singleton
     fun provideApiServiceBuilder(client: OkHttpClient.Builder): Retrofit.Builder = with(client) {
         val logInterceptor = HttpLoggingInterceptor()
         logInterceptor.level = HttpLoggingInterceptor.Level.BODY
