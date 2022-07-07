@@ -8,6 +8,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.malakapps.fxrate.base.domain.usecase.GetCurrencyListUseCase
 import com.malakapps.fxrate.baseAndroid.BaseFragment
 import com.malakapps.fxrate.baseAndroid.consume
+import com.malakapps.fxrate.baseAndroid.setOnClearListener
 import com.malakapps.fxrate.baseAndroid.view.viewAwareProperty
 import com.malakapps.fxrate.currency.view.list.adapter.CurrencyAdapter
 import com.malakapps.fxrate.currencyview.R
@@ -32,8 +33,10 @@ class CurrencyListFragment : BaseFragment<CurrencyListViewModel>(R.layout.fragme
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
 
         binding.currencyList.adapter = adapter
+        with(binding.search) { setOnClearListener { text.clear() } }
     }
 
     override fun createViewModel() = CurrencyListViewModel(getCurrencyListUseCase)
@@ -41,8 +44,8 @@ class CurrencyListFragment : BaseFragment<CurrencyListViewModel>(R.layout.fragme
     override fun subscribeToViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.currencyList.collectLatest { currencyList ->
-                    adapter.submitList(currencyList)
+                viewModel.uiState.collectLatest { state ->
+                    adapter.submitList(state.filteredCurrencies)
                 }
             }
         }

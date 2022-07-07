@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="select_currency">Select currency</string>
+    <string name="search_hint">Search</string>
 </resources>

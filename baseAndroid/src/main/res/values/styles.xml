@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Widget.SearchView" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:inputType">textFilter</item>
+        <item name="android:imeOptions">actionSearch</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawablePadding">@dimen/spacing_small</item>
+        <item name="android:drawableStart">@drawable/ic_search</item>
+        <item name="android:drawableEnd">@drawable/ic_cancel</item>
+        <item name="android:background">@drawable/edit_text_border</item>
+        <item name="android:padding">@dimen/spacing_small</item>
+        <item name="android:singleLine">true</item>
+    </style>
+</resources>
