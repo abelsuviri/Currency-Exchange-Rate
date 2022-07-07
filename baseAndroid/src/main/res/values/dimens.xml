@@ -2,4 +2,6 @@
 <resources>
     <dimen name="spacing">16dp</dimen>
     <dimen name="spacing_small">8dp</dimen>
+
+    <dimen name="letter_icon_font_size">18dp</dimen>
 </resources>
