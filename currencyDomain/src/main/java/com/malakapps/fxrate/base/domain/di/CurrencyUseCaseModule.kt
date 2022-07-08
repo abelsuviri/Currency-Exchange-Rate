@@ -1,6 +1,7 @@
 package com.malakapps.fxrate.base.domain.di
 
 import com.malakapps.fxrate.base.domain.FxRepository
+import com.malakapps.fxrate.base.domain.ICurrencyCache
 import com.malakapps.fxrate.base.domain.IFxApi
 import com.malakapps.fxrate.base.domain.usecase.GetCurrencyListUseCase
 import com.malakapps.fxrate.base.domain.usecase.GetExchangeRateUseCase
@@ -12,7 +13,8 @@ class CurrencyUseCaseModule {
     @Provides
     fun provideFxRepository(
         fxApi: IFxApi,
-    ) = FxRepository(fxApi)
+        currencyCache: ICurrencyCache,
+    ) = FxRepository(fxApi, currencyCache)
 
     @Provides
     fun provideGetCurrencyListUseCase(repository: FxRepository) = GetCurrencyListUseCase(repository)

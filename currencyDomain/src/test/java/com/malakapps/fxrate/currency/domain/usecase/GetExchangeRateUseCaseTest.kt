@@ -44,7 +44,7 @@ class GetExchangeRateUseCaseTest(
         val targetCurrency = Currency("EUR", "Euro")
         val amount = 1.5.toBigDecimal()
         val repository = mockk<FxRepository>()
-        coEvery { repository.getExchangeRate(srcCurrency, targetCurrency, amount) } returns flowOf(repositoryResult)
+        coEvery { repository.getExchangeRate(srcCurrency, targetCurrency, amount) } returns repositoryResult
 
         val useCase = GetExchangeRateUseCase(repository)
 

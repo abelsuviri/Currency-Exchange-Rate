@@ -5,14 +5,11 @@ import com.malakapps.fxrate.base.domain.FxRepository
 import com.malakapps.fxrate.base.domain.model.Currency
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 
 class GetCurrencyListUseCase(
     private val fxRepository: FxRepository,
     dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : FlowUseCase<Unit, List<Currency>>(dispatcher) {
-    override suspend fun performAction(param: Unit) = flow {
-        val response = fxRepository.getCurrencyList()
-        emit(Result.ofNullable(response))
-    }
+    override suspend fun performAction(param: Unit) = fxRepository.getCurrencyList().map { Result.ofNullable(it) }
 }
