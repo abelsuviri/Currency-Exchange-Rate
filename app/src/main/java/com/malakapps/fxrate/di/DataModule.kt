@@ -14,4 +14,7 @@ class DataModule {
     @Provides
     @Singleton
     fun provideFxRateDatabase(application: Application) = FxRateDatabase.Builder(application).build()
+
+    @Provides
+    fun provideCurrencyDao(database: FxRateDatabase) = database.currencyDao()
 }

@@ -2,5 +2,7 @@ package com.malakapps.fxrate.base.data
 
 abstract class FxRateCache {
     protected suspend fun <T> runQuery(query: suspend () -> T) =
-        query.runCatching { invoke() }.getOrNull()
+        query.runCatching { invoke() }
+            .onFailure { println(it.message) }
+            .getOrNull()
 }

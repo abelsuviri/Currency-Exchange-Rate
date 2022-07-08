@@ -1,7 +1,7 @@
 package com.malakapps.fxrate.api.di
 
 import com.malakapps.fxrate.api.ApiClient
-import com.malakapps.fxrate.base.IFxApi
+import com.malakapps.fxrate.base.domain.IFxApi
 import dagger.Binds
 import dagger.Module
 

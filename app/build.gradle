@@ -55,6 +55,7 @@ dependencies {
 
     implementation project(':baseAndroid')
     implementation project(':api')
+    implementation project(':currencyData')
     implementation project(':currencyDomain')
     implementation project(':currencyView')
 

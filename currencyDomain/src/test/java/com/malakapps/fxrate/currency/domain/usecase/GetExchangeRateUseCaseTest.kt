@@ -1,6 +1,6 @@
 package com.malakapps.fxrate.currency.domain.usecase
 
-import com.malakapps.fxrate.base.FxRepository
+import com.malakapps.fxrate.base.domain.FxRepository
 import com.malakapps.fxrate.base.domain.model.Currency
 import com.malakapps.fxrate.base.domain.model.ExchangeRate
 import com.malakapps.fxrate.base.domain.usecase.GetExchangeRateUseCase

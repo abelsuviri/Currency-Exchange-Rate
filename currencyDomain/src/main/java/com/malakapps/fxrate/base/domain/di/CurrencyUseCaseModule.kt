@@ -1,7 +1,7 @@
 package com.malakapps.fxrate.base.domain.di
 
-import com.malakapps.fxrate.base.FxRepository
-import com.malakapps.fxrate.base.IFxApi
+import com.malakapps.fxrate.base.domain.FxRepository
+import com.malakapps.fxrate.base.domain.IFxApi
 import com.malakapps.fxrate.base.domain.usecase.GetCurrencyListUseCase
 import com.malakapps.fxrate.base.domain.usecase.GetExchangeRateUseCase
 import dagger.Module

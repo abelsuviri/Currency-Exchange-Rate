@@ -1,0 +1,7 @@
+apply from: "$rootDir/gradleCommon/data-module.gradle"
+
+dependencies {
+    implementation project(':currencyDomain')
+
+    testImplementation project(':testUtil')
+}

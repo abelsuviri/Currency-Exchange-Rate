@@ -1,7 +1,7 @@
 package com.malakapps.fxrate.api
 
 import com.malakapps.fxrate.api.fx.FxService
-import com.malakapps.fxrate.base.IFxApi
+import com.malakapps.fxrate.base.domain.IFxApi
 import com.malakapps.fxrate.base.domain.model.Currency
 import java.math.BigDecimal
 

@@ -1,4 +1,4 @@
-package com.malakapps.fxrate.base
+package com.malakapps.fxrate.base.domain
 
 import com.malakapps.fxrate.base.domain.model.Currency
 import com.malakapps.fxrate.base.domain.model.ExchangeRate

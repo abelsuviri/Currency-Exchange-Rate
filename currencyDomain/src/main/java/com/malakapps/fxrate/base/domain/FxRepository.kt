@@ -1,8 +1,6 @@
-package com.malakapps.fxrate.base
+package com.malakapps.fxrate.base.domain
 
 import com.malakapps.fxrate.base.domain.model.Currency
-import com.malakapps.fxrate.base.domain.model.ExchangeRate
-import kotlinx.coroutines.flow.flow
 import java.math.BigDecimal
 
 class FxRepository(
