@@ -45,6 +45,7 @@ class AmountEditText(context: Context, attrs: AttributeSet? = null) :
         set(value) {
             val listener = amountChangeListener
             amountChangeListener = null
+            value?.let { formatter.currencyCode = it }
             rawAmount = rawAmount.copy(currency = value)
             renderNumber()
             amountChangeListener = listener

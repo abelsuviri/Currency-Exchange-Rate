@@ -27,7 +27,11 @@ class CurrencyFormatter @Inject constructor(@ActivityContext val context: Contex
             formatter.minimumFractionDigits = value.defaultFractionDigits
         }
 
-    var currencyCode = currency.currencyCode
+    var currencyCode: String
+        get() = currency.currencyCode
+        set(value) {
+            currency = Currency.getInstance(value)
+        }
 
     var fractionDigits: Int
         get() = formatter.maximumFractionDigits
