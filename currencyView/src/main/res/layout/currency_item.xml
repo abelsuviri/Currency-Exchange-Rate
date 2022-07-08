@@ -30,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_small"
             android:text="@{currency.name}"
+            android:textAppearance="?textAppearanceBody1"
             app:layout_constraintBottom_toBottomOf="@id/currency_logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/currency_logo"
