@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.stateIn
 class CurrencyListViewModel(getCurrencyListUseCase: GetCurrencyListUseCase): BaseViewModel() {
     private val currencyList = getCurrencyListUseCase.call().mapLatest { response ->
         response.data?.sortedBy { it.name } ?: emptyList()
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+    }.bindSpinner().stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
     val filterText = MutableLiveData("")
 

@@ -52,7 +52,7 @@ class FxRateViewModel(
         } else {
             flowOf(null)
         }
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
+    }.bindSpinner().stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
 
     private fun getRate(result: FlowUseCase.Result<ExchangeRate>) = when (result) {
         is FlowUseCase.Result.Success -> result.result

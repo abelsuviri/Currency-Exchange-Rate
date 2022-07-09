@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -20,24 +19,10 @@ abstract class BaseViewModel : ViewModel() {
     private var spinnerJob: Job? = null
 
     private val _coroutineJobFinished = MutableLiveData(true)
-    val coroutineJobFinished: LiveData<Boolean>
-        get() = _coroutineJobFinished
 
     private val _dialogSpinnerVisible = MutableLiveData(false)
     val dialogSpinnerVisible: LiveData<Boolean>
         get() = _dialogSpinnerVisible
-
-    fun submitUseCase(lockExpression: Boolean = true, callback: suspend CoroutineScope.() -> Unit) =
-        viewModelScope.launch {
-            _coroutineJobFinished.value = lockExpression.not()
-            switchSpinnerVisibility(true)
-            callback()
-        }.also {
-            it.invokeOnCompletion {
-                _coroutineJobFinished.value = true
-                switchSpinnerVisibility(false)
-            }
-        }
 
     @Synchronized
     fun switchSpinnerVisibility(shouldDisplay: Boolean) {
