@@ -1,6 +1,7 @@
 package com.malakapps.fxrate.di
 
 import android.app.Application
+import com.malakapps.fxrate.basedomain.RefreshControl
 import com.malakapps.fxrate.database.FxRateDatabase
 import dagger.Module
 import dagger.Provides
@@ -17,4 +18,8 @@ class DataModule {
 
     @Provides
     fun provideCurrencyDao(database: FxRateDatabase) = database.currencyDao()
+
+    @Provides
+    @Singleton
+    fun provideRefreshControl() = RefreshControl()
 }
