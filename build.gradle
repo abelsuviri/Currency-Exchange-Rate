@@ -8,7 +8,7 @@ buildscript {
             'androidx'             : '1.8.0',
             'appCompat'            : '1.4.2',
             'constraintLayout'     : '2.1.4',
-            'fragmentKtx'          : "1.4.1",
+            'fragmentKtx'          : "1.5.0",
             'lifecycle'            : '2.5.0',
             'multidex'             : '2.0.1',
             'navigation'           : '2.5.0',

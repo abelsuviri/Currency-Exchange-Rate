@@ -10,12 +10,15 @@ import com.malakapps.fxrate.baseAndroid.BaseViewModel
 import com.malakapps.fxrate.baseAndroid.LiveDataEvent
 import com.malakapps.fxrate.basedomain.call
 import com.malakapps.fxrate.basedomain.data
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
+import javax.inject.Inject
 
-class CurrencyListViewModel(getCurrencyListUseCase: GetCurrencyListUseCase): BaseViewModel() {
+@HiltViewModel
+class CurrencyListViewModel @Inject constructor(getCurrencyListUseCase: GetCurrencyListUseCase): BaseViewModel() {
     private val currencyList = getCurrencyListUseCase.call().mapLatest { response ->
         response.data?.sortedBy { it.name } ?: emptyList()
     }.bindSpinner().stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())

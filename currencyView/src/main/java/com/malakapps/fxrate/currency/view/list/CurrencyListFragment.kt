@@ -2,10 +2,10 @@ package com.malakapps.fxrate.currency.view.list
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.malakapps.fxrate.base.domain.usecase.GetCurrencyListUseCase
 import com.malakapps.fxrate.baseAndroid.BaseFragment
 import com.malakapps.fxrate.baseAndroid.consume
 import com.malakapps.fxrate.baseAndroid.setOnClearListener
@@ -20,8 +20,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class CurrencyListFragment : BaseFragment<CurrencyListViewModel>(R.layout.fragment_currency_list) {
-    @Inject
-    lateinit var getCurrencyListUseCase: GetCurrencyListUseCase
+    override val viewModel: CurrencyListViewModel by viewModels()
 
     @Inject
     lateinit var nav: ICurrencyListFragmentNav
@@ -38,8 +37,6 @@ class CurrencyListFragment : BaseFragment<CurrencyListViewModel>(R.layout.fragme
         binding.currencyList.adapter = adapter
         with(binding.search) { setOnClearListener { text.clear() } }
     }
-
-    override fun createViewModel() = CurrencyListViewModel(getCurrencyListUseCase)
 
     override fun subscribeToViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {

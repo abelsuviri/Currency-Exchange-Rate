@@ -8,14 +8,9 @@ import androidx.fragment.app.Fragment
 import com.malakapps.fxrate.baseAndroid.view.spinner.LoadingSpinner
 
 abstract class BaseFragment<VM: BaseViewModel>(@LayoutRes layoutResourceId: Int) : Fragment(layoutResourceId) {
-    protected lateinit var viewModel: VM
+    abstract val viewModel: VM
 
     private var loadingSpinner: LoadingSpinner? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = createViewModel()
-    }
 
     @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,7 +28,6 @@ abstract class BaseFragment<VM: BaseViewModel>(@LayoutRes layoutResourceId: Int)
         unsubscribeFromLoadingState()
     }
 
-    abstract fun createViewModel(): VM
     abstract fun subscribeToViewModel()
 
     private fun subscribeToLoadingState() {

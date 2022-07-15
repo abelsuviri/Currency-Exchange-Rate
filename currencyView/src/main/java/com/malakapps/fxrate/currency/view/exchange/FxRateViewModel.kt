@@ -13,21 +13,22 @@ import com.malakapps.fxrate.baseAndroid.view.edittext.AmountEditText
 import com.malakapps.fxrate.basedomain.FlowUseCase
 import com.malakapps.fxrate.basedomain.model.Amount
 import com.malakapps.fxrate.basedomain.safeLet
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.combineTransform
 import kotlinx.coroutines.flow.debounce
-import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import java.math.BigDecimal
+import javax.inject.Inject
 
-class FxRateViewModel(
+@HiltViewModel
+class FxRateViewModel @Inject constructor(
     private val getExchangeRateUseCase: GetExchangeRateUseCase,
 ) : BaseViewModel(), AmountEditText.AmountChangeListener {
     companion object {
@@ -49,10 +50,11 @@ class FxRateViewModel(
             }.debounce(INPUT_DELAY)
                 .flatMapLatest(getExchangeRateUseCase::call)
                 .map(::getRate)
+                .onStart { emit(null) }
         } else {
             flowOf(null)
         }
-    }.bindSpinner().stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
 
     private fun getRate(result: FlowUseCase.Result<ExchangeRate>) = when (result) {
         is FlowUseCase.Result.Success -> result.result

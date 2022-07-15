@@ -2,10 +2,10 @@ package com.malakapps.fxrate.currency.view.exchange
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.malakapps.fxrate.base.domain.usecase.GetExchangeRateUseCase
 import com.malakapps.fxrate.baseAndroid.BaseFragment
 import com.malakapps.fxrate.baseAndroid.consume
 import com.malakapps.fxrate.baseAndroid.view.viewAwareProperty
@@ -18,8 +18,8 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class FxRateFragment : BaseFragment<FxRateViewModel>(R.layout.fragment_fx_rate) {
-    @Inject
-    lateinit var getExchangeRateUseCase: GetExchangeRateUseCase
+
+    override val viewModel: FxRateViewModel by viewModels()
 
     @Inject
     lateinit var nav: IFxRateFragmentNav
@@ -46,8 +46,6 @@ class FxRateFragment : BaseFragment<FxRateViewModel>(R.layout.fragment_fx_rate) 
         binding.amountEditText.amountChangeListener = null
         super.onStop()
     }
-
-    override fun createViewModel() = FxRateViewModel(getExchangeRateUseCase)
 
     override fun subscribeToViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
